@@ -1,6 +1,6 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "8c02077c129ec94ece8986d056007dfe"
+client_id = ""
 name = "recomdo-ai"
 application_url = "https://conventional-facing-donna-fan.trycloudflare.com"
 embedded = true
