@@ -1,0 +1,170 @@
+[
+  {
+    "code": "shopify_title",
+    "name": "Title",
+    "type": "select",
+    "is_filterable": "1",
+    "is_searchable": "1",
+    "option": [
+      {
+        "value": "default title",
+        "label": "Default Title"
+      }
+    ]
+  },
+  {
+    "code": "shopify_size",
+    "name": "Size",
+    "type": "select",
+    "is_filterable": "1",
+    "is_searchable": "1",
+    "option": [
+      {
+        "value": "44",
+        "label": "44"
+      },
+      {
+        "value": "43",
+        "label": "43"
+      },
+      {
+        "value": "42",
+        "label": "42"
+      },
+      {
+        "value": "40",
+        "label": "40"
+      },
+      {
+        "value": "45",
+        "label": "45"
+      },
+      {
+        "value": "48",
+        "label": "48"
+      },
+      {
+        "value": "46",
+        "label": "46"
+      },
+      {
+        "value": "xl",
+        "label": "XL"
+      },
+      {
+        "value": "m",
+        "label": "M"
+      },
+      {
+        "value": "s",
+        "label": "S"
+      },
+      {
+        "value": "l",
+        "label": "L"
+      },
+      {
+        "value": "small",
+        "label": "Small"
+      },
+      {
+        "value": "medium",
+        "label": "Medium"
+      },
+      {
+        "value": "large",
+        "label": "Large"
+      },
+      {
+        "value": "m",
+        "label": "M"
+      },
+      {
+        "value": "l",
+        "label": "L"
+      },
+      {
+        "value": "xl",
+        "label": "XL"
+      }
+    ]
+  },
+  {
+    "code": "shopify_color",
+    "name": "Color",
+    "type": "select",
+    "is_filterable": "1",
+    "is_searchable": "1",
+    "option": [
+      {
+        "value": "black",
+        "label": "Black"
+      },
+      {
+        "value": "white",
+        "label": "White"
+      },
+      {
+        "value": "brown",
+        "label": "Brown"
+      },
+      {
+        "value": "red",
+        "label": "Red"
+      },
+      {
+        "value": "green",
+        "label": "Green"
+      },
+      {
+        "value": "red",
+        "label": "Red"
+      },
+      {
+        "value": "green",
+        "label": "Green"
+      },
+      {
+        "value": "black",
+        "label": "Black"
+      },
+      {
+        "value": "blue",
+        "label": "Blue"
+      },
+      {
+        "value": "grey",
+        "label": "Grey"
+      },
+      {
+        "value": "black",
+        "label": "Black"
+      },
+      {
+        "value": "violet",
+        "label": "Violet"
+      }
+    ]
+  },
+  {
+    "code": "shopify_brand",
+    "name": "Brand",
+    "type": "select",
+    "is_filterable": "1",
+    "is_searchable": "1",
+    "option": [
+      {
+        "value": "puma",
+        "label": "Puma"
+      },
+      {
+        "value": "nike",
+        "label": "Nike"
+      },
+      {
+        "value": "addidas",
+        "label": "Addidas"
+      }
+    ]
+  }
+]

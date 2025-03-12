@@ -1,0 +1,175 @@
+<script src="{{ 'recomdo-ai-search.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'main-search-recomdo.js' | asset_url }}" defer="defer"></script>
+{{ 'recomdo-ai-search.css' | asset_url | stylesheet_tag }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap" rel="stylesheet">
+
+<script async>
+  var selectedCountry = Shopify.country;
+
+
+
+  var desiredOrder = ["price-ascending", "price-descending", "relevance"];
+
+  if (window.location.search) {
+    orderSortOptions(selectedCountry)
+    orderFilters(selectedCountry)
+  }
+
+  async function orderSortOptions(selectedCountry) {
+    try {
+      const data = await getSortByOptionOrder(selectedCountry)
+      var desiredOrder = []
+      data.sortbyoptions.forEach((item) => {
+        desiredOrder.push(item.code)
+      })
+      console.log("desiredOrder", desiredOrder)
+
+      var dropdown = document.getElementById("SortBy");
+
+      var options = Array.from(dropdown.options);
+
+      options.forEach(function (option) {
+        dropdown.removeChild(option);
+      });
+
+      desiredOrder.forEach(function (value) {
+        options.forEach((option) => {
+          if (option.value.includes(value)) {
+            dropdown.appendChild(option);
+          }
+        })
+        var optionRel = options.find(function (opt) {
+          return opt.value == 'relevance';
+        });
+        if (optionRel) {
+          dropdown.appendChild(optionRel);
+        }
+      });
+
+    } catch (error) {
+      console.error("Error occurred:", error);
+    }
+  }
+
+  async function getSortByOptionOrder(selectedCountry) {
+    return new Promise((resolve, reject) => {
+      const params = {
+        CategoryId: 'SEARCH_PAGE',
+        country: selectedCountry
+      };
+      const queryString = Object.keys(params)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+        .join('&');
+      const xhr = new XMLHttpRequest();
+      console.log("URLSORTPARA", queryString)
+      xhr.open("GET", "http://shopifybackend.ai/sort_by_options" + "?" + queryString, true);
+      // xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          var response = xhr.response;
+          var sortByOrder = response;
+          resolve(JSON.parse(sortByOrder));
+
+        } else {
+          console.error("some error occurred");
+          reject("Some error occurred");
+        }
+      };
+      xhr.onerror = function () {
+        console.error("another error occurred");
+        reject("Another error occurred");
+      };
+      xhr.send();
+    })
+
+  }
+
+
+  async function orderFilters(selectedCountry) {
+    try {
+      const data = await getFiltersOrder(selectedCountry)
+      var desiredOrder = []
+      data.layerednavsort.forEach((item) => {
+        desiredOrder.push(item.code)
+      })
+      console.log("desiredOrder", desiredOrder)
+
+      var parentElement = document.getElementById('FacetsWrapperDesktop');
+      var filterElements = parentElement.querySelectorAll('.js-filter');
+      filterElements = Array.from(filterElements);
+
+      filterElements.sort(function (a, b) {
+        var textA = a.querySelector('span:first-child').innerText.trim().toLowerCase();
+        var textB = b.querySelector('span:first-child').innerText.trim().toLowerCase();
+
+        var indexA = desiredOrder.indexOf(textA);
+        var indexB = desiredOrder.indexOf(textB);
+
+        if (indexA === -1 && indexB === -1) {
+          return 0;
+        } else if (indexA === -1) {
+          return 1;
+        } else if (indexB === -1) {
+          return -1;
+        } else {
+          return indexA - indexB;
+        }
+      });
+
+
+      filterElements.forEach(function (filterElement) {
+        parentElement.removeChild(filterElement);
+      });
+
+      filterElements.forEach(function (filterElement) {
+        parentElement.appendChild(filterElement);
+      });
+      console.log("parentElementsss1122221", parentElement)
+    } catch (error) {
+      console.error("Error occurred:", error);
+    }
+  }
+
+  async function getFiltersOrder(selectedCountry) {
+    return new Promise((resolve, reject) => {
+      const params = {
+        CategoryId: 'SEARCH_PAGE',
+        country: selectedCountry
+      };
+      const queryString = Object.keys(params)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+        .join('&');
+      const xhr = new XMLHttpRequest();
+      console.log("URLLAYERPARA", queryString)
+      xhr.open("GET", "http://shopifybackend.ai/layered_navigation_filter" + "?" + queryString, true);
+      // xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          var response = xhr.response;
+          var layerednavsort = response;
+          resolve(JSON.parse(layerednavsort));
+
+        } else {
+          console.error("some error occurred");
+          reject("Some error occurred");
+        }
+      };
+      xhr.onerror = function () {
+        console.error("another error occurred");
+        reject("Another error occurred");
+      };
+      xhr.send();
+    })
+
+  }
+</script>
+
+{% schema %}
+{
+"name": "recomdo ai Search",
+"target": "body",
+"settings": []
+}
+{% endschema %}

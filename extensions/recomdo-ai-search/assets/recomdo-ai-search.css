@@ -1,0 +1,133 @@
+/*==== PREDICTIVE SEARCH==== */
+.predictive-search.predictive-search--header {
+  width: 100% !important;
+  max-width: 74.2rem;
+}
+.search__input.field__input {
+  z-index: 2;
+  background-color: transparent;
+}
+.reset__button.field__button {
+  z-index: 3;
+}
+.autofill-content-style {
+  position: absolute;
+  z-index: 1 !important;
+  padding-right: 9.8rem;
+  padding: 2.2rem 1.5rem 0.8rem 2rem;
+  width: inherit;
+  height: -webkit-fill-available;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  letter-spacing: 0.04rem;
+  color: rgba(124, 124, 124, 0.651) !important;
+}
+.suggest-content-style a:hover {
+  color: red;
+}
+.suggestion-container {
+  font-family: "Pathway Gothic One", sans-serif;
+  display: grid;
+  padding: 20px;
+  grid-template-columns: 75% 25%;
+}
+.suggestion-container .title {
+  font-weight: 600;
+  line-height: 1.8rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.suggest-content-style {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+.suggest-content-style img {
+  width: 50%;
+}
+.suggest-content-style a {
+  padding: 1rem;
+  flex: 0 0 50%;
+}
+.suggest-content-style a {
+  border-right: 1px solid #dbdbdb;
+}
+.suggestion-container a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  display: block;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-container a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+
+.item-info span {
+  font-size: 20px;
+  /* color: #000; */
+  font-weight: 600;
+  display: inline-block;
+  line-height: 2.4rem;
+}
+
+.item-info span:hover {
+  font-size: 20px;
+  color: red;
+  font-weight: 600;
+}
+
+.item-info p {
+  font-size: 16px;
+  color: #000;
+  font-weight: 600;
+}
+
+.other-suggestions {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.other-suggestions a {
+  display: block;
+}
+
+.category-suggestions {
+  margin-bottom: 20px;
+}
+.category-suggestions a,
+.word-suggestions a {
+  font-weight: 500;
+}
+.category-suggestions a:hover,
+.word-suggestions a:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(102, 102, 102);
+}
+.category-suggestions a:not(:last-child),
+.word-suggestions a:not(:last-child) {
+  margin-bottom: 0.2rem;
+  display: block;
+}
+
+/*==== MAIN SEARCH==== */
+
+.recomdo-ai-suggestions .block dd {
+  display: inline-block;
+  margin-right: 20px;
+  margin-left: 0;
+}
+.recomdo-ai-suggestions .block dt {
+  font-weight: 600;
+}
